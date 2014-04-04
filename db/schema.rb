@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140404193018) do
+ActiveRecord::Schema.define(version: 20140404202648) do
 
   create_table "cars", force: true do |t|
     t.string   "brand"
@@ -30,6 +30,39 @@ ActiveRecord::Schema.define(version: 20140404193018) do
   end
 
   add_index "cars_replacements", ["car_id", "replacement_id"], name: "cars_replacements", unique: true, using: :btree
+
+  create_table "customers", primary_key: "identity", force: true do |t|
+    t.string   "name"
+    t.integer  "age"
+    t.string   "gender"
+    t.integer  "mobile"
+    t.string   "email"
+    t.text     "address"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "order_details", force: true do |t|
+    t.integer  "order_id"
+    t.integer  "replacement_id"
+    t.integer  "quantity"
+    t.decimal  "unit_price",     precision: 10, scale: 0
+    t.decimal  "discount",       precision: 10, scale: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "order_details", ["order_id"], name: "index_order_details_on_order_id", using: :btree
+  add_index "order_details", ["replacement_id"], name: "index_order_details_on_replacement_id", using: :btree
+
+  create_table "orders", force: true do |t|
+    t.string   "customer_id"
+    t.integer  "store"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "orders", ["customer_id"], name: "index_orders_on_customer_id", using: :btree
 
   create_table "replacements", force: true do |t|
     t.string   "name"

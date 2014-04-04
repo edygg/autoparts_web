@@ -1,4 +1,5 @@
-<div>
+<section>
+	<article>
 	<% if user_signed_in?%>
 		<strong><%=current_user.email%></strong><br>
 		<%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
@@ -6,11 +7,15 @@
 		   <%= link_to "SIGN UP", new_user_registration_path%><br>
            <%= link_to "SIGN IN", new_user_session_path %>
 	<%end%>
-</div>
-<div>
+</article>
+<article>
 	<br>
 	<br>
 	<br>
 	<%= link_to "Replacements", controller: 'replacements', action: 'index'%><br>
 	<%= link_to "Cars", controller: 'cars', action: 'index'%>
-</div>
+	<%= link_to "Customers", controller: 'customers', action: 'index'%>
+</article>
+
+
+</section>

@@ -1,5 +1,12 @@
 Proyect::Application.routes.draw do
+  resources :order_details
+
+  resources :orders
+
+  resources :customers
+
   devise_for :users
+  
   resources :replacements
 
   resources :cars
