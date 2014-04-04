@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  sale_price: 9.99
+  purchase_price: 9.99
+  units_in_stock: 1
+
+two:
+  name: MyString
+  sale_price: 9.99
+  purchase_price: 9.99
+  units_in_stock: 1

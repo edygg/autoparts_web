@@ -1,0 +1,33 @@
+<h1>Listing replacements</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Sale price</th>
+      <th>Purchase price</th>
+      <th>Units in stock</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @replacements.each do |replacement| %>
+      <tr>
+        <td><%= replacement.name %></td>
+        <td><%= replacement.sale_price %></td>
+        <td><%= replacement.purchase_price %></td>
+        <td><%= replacement.units_in_stock %></td>
+        <td><%= link_to 'Show', replacement %></td>
+        <td><%= link_to 'Edit', edit_replacement_path(replacement) %></td>
+        <td><%= link_to 'Destroy', replacement, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Replacement', new_replacement_path %>
