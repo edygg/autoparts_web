@@ -4,11 +4,11 @@ class ReplacementsController < ApplicationController
 
 
   def search
-    if params[:search]
-      @replacements = Replacement.find(:all, :conditions =>['name LIKE ?',"%#{params[:search]}%"])
-    else
-      @replacements = Replacement.find(:all)
-    end
+    @replacements = Replacement.find(:all, :conditions =>['name LIKE ?',"%#{params[:search]}%"])
+      respond_to do |format|
+        format.json { render :json => @replacements.to_json }
+        format.html { redirect_to action: "index" }
+      end
   end
 
 
