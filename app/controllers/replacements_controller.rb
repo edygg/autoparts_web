@@ -2,6 +2,16 @@ class ReplacementsController < ApplicationController
   layout 'application_with_navbar'
   before_action :set_replacement, only: [:show, :edit, :update, :destroy]
 
+
+  def search
+    if params[:search]
+      @replacements = Replacement.find(:all, :conditions =>['name LIKE ?',"%#{params[:search]}%"])
+    else
+      @replacements = Replacement.find(:all)
+    end
+  end
+
+
   # GET /replacements
   # GET /replacements.json
   def index

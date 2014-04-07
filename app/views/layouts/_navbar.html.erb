@@ -21,6 +21,32 @@
 					<li><%= link_to "Listar autos", cars_path %></li>
 				</ul>
 			</li>
+
+			<% if user_signed_in?%>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                       <%=current_user.email%> <%= icon('angle-down') %>
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li>
+                          <div class="form-group">
+                            <div class="col-sm-10">
+                              <label for="inputEmail3" class="col-sm-3 control-label"><i class="fa fa-sign-out"></i></label>
+                              <%= link_to "SIGN OUT", destroy_user_session_path, :method => :delete %>
+                            </div>
+                          </div>                        
+                      </li>
+                    </ul>
+                 </li>
+            <% else %>
+            <li><%= link_to "SIGN UP", new_user_registration_path%></li>
+            <li><%= link_to "SIGN IN", new_user_session_path %></li>
+            <% end %>
 		</ul>
+		<form action="/search" method="get">
+			<div class="input-group">
+				<input type="text" class="form-control" placeholder="Replacement to search" name="search">
+			</div>
+		</form>
 	</div>
 </nav>
