@@ -1,4 +1,5 @@
 class CarsController < ApplicationController
+  layout 'application_with_navbar'
   before_action :set_car, only: [:show, :edit, :update, :destroy]
 
   # GET /cars

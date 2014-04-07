@@ -1,4 +1,5 @@
 class ReplacementsController < ApplicationController
+  layout 'application_with_navbar'
   before_action :set_replacement, only: [:show, :edit, :update, :destroy]
 
   # GET /replacements
