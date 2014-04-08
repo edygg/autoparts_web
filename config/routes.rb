@@ -7,7 +7,9 @@ Proyect::Application.routes.draw do
 
   devise_for :users
   
-  resources :replacements
+  resources :replacements do
+    get :search, on: :collection
+  end
 
   resources :cars
 

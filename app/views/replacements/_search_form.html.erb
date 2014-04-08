@@ -1,0 +1,8 @@
+<%= form_tag({controller: 'replacements', action: 'search'}, method: 'get', class: 'form-inline', remote: true, id: 'search-form') do %>
+	<div class="form-group">
+		<%= label_tag :keyword, "Nombre del repuesto", class: "control-label" %>
+		<%= text_field_tag :keyword, '', class: "form-control" %>
+		<%= submit_tag("Buscar", class: 'btn btn-sm btn-primary') %>
+	</div>
+
+<% end %>

@@ -1,33 +1,34 @@
-<h1>Listing replacements</h1>
+<div class="container">
+  <div class="col-md-8 col-md-offset-2">
+    <h1>Lista de repuestos</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Sale price</th>
-      <th>Purchase price</th>
-      <th>Units in stock</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+    <%= render 'search_form' %>
 
-  <tbody>
-    <% @replacements.each do |replacement| %>
-      <tr>
-        <td><%= replacement.name %></td>
-        <td><%= replacement.sale_price %></td>
-        <td><%= replacement.purchase_price %></td>
-        <td><%= replacement.units_in_stock %></td>
-        <td><%= link_to 'Show', replacement %></td>
-        <td><%= link_to 'Edit', edit_replacement_path(replacement) %></td>
-        <td><%= link_to 'Destroy', replacement, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <br>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Precio de venta</th>
+          <th>Unidades disponibles</th>
+          <th></th>
+        </tr>
+      </thead>
 
-<br>
+      <tbody>
+        <% @replacements.each do |replacement| %>
+          <tr class="remove-row">
+            <td><%= replacement.name %></td>
+            <td><%= number_to_currency replacement.sale_price, unit: 'L.' %></td>
+            <td><%= replacement.units_in_stock %></td>
+            <td><%= link_to 'Mostrar más información', replacement, class: "btn btn-sm btn-info" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
 
-<%= link_to 'New Replacement', new_replacement_path %>
+    <br>
+
+    <%= link_to 'Nuevo repuesto', new_replacement_path, class: "btn btn-success" %>
+  </div>
+</div>
