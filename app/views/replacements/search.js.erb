@@ -1,9 +1,7 @@
 $(document).ready(function() {
 	$('.remove-row').remove();
-	var neoRow;
-	<% @remplacements.each do |replacement| %>
-		//neoRow = $('tr').html('<%= "<td>#{replacement.name}</td><td>#{replacement.sale_price}</td><td>#{replacement.units_in_stock}</td>" %>');
-		//console.log(neoRow);
+	<% @replacements.each do |replacement| %>
+		$('tbody').append('<%= "<tr class=\"remove-row\"><td>#{replacement.name}</td><td>#{replacement.sale_price}</td><td>#{replacement.units_in_stock}</td><td>#{link_to 'Mostrar más información', replacement, class: 'btn btn-sm btn-info'}</td></tr>".html_safe %>');
 		//$('tbody').append(neoRow);
 	<% end %>
 });
